@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AddStudent from './Components/AddStudent';
+import Contact from './Components/Contact';
+import EditStudent from './Components/EditStudent';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import Student from './Components/Student';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header/>
+
+        <Routes>
+            <Route path="/" element={   <Navigate   to={"/home"}/>}/>
+            <Route path="/home" element={ <Home/> }/>
+            <Route path="/students" element={ <Student/> }/>
+            <Route path="/add-student" element={ <AddStudent/> }/>
+            <Route path="/edit-student/:studentId" element={ <EditStudent/> }/>
+            <Route path="/contact" element={ <Contact/> }/>
+        </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+// To install redux
+// npm i react-redux redux
+
+// Command to install react-router-dom:
+// npm i react-router-dom
+// 
+// Commands required to install modules for the usage of material ui table:
+// npm install material-table --save
+// npm install "@material-ui/core" --save
+// 
+// Additional Commands to prevent error and to use Text Field:
+// npm install @mui/material @emotion/react @emotion/styled
